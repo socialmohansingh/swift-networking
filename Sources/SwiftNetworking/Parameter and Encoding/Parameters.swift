@@ -36,7 +36,7 @@ extension Parameters {
 }
 
 extension CharacterSet {
-    static let allowedQueryCharacterSet: CharacterSet = {
+    static public let allowedQueryCharacterSet: CharacterSet = {
         let generalDelimitersToEncode = ":#[]@"
         let subDelimitersToEncode = "!$&'()*+,;="
         var allowed = CharacterSet.urlQueryAllowed

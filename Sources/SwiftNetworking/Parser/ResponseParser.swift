@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct ResponseParser {
+public struct ResponseParser {
     let result: (data: Data, response: URLResponse)
     
     // parse the data from response
-    func parse(for request: URLRequest, router: NetworkingRouter) throws {
+    public func parse(for request: URLRequest, router: NetworkingRouter) throws {
         guard let urlResponse = result.response as? HTTPURLResponse else { assertionFailure(); return }
         guard !(200...299 ~= urlResponse.statusCode) else { return }
         throw NetworkingError(.invalidStatusCode(urlResponse.statusCode), result: result, request: request, router: router)

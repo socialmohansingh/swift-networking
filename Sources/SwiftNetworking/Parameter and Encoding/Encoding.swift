@@ -14,7 +14,7 @@ public enum EncoderType {
 
 // MARK: Sets the parameter as json object to body of the request
 extension URLRequest {
-    mutating func jsonEncoding(_ parameters: Parameters?) throws {
+    mutating public func jsonEncoding(_ parameters: Parameters?) throws {
         guard let params = parameters else { return }
         do {
             let data = try JSONSerialization.data(withJSONObject: params, options: .sortedKeys)
@@ -29,7 +29,7 @@ extension URLRequest {
 // MARK: Sets the params as the url query string if the supported methods are used or add to body otherwise
 extension URLRequest {
     
-    mutating func urlEncoding(_ parameters: Parameters?) throws {
+    mutating public func urlEncoding(_ parameters: Parameters?) throws {
         guard let params = parameters else { return }
         if let method = httpMethod, supportsURLQuery(method: method), let requestURL = url {
             if var urlComponents = URLComponents(url: requestURL ,resolvingAgainstBaseURL: false) {
